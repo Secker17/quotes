@@ -1,0 +1,166 @@
+/* Navbar Styles */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    background-color: #000; /* Black background */
+  }
+  
+  .logo {
+    width: 140px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-button {
+    padding: 10px 20px;
+    margin-left: 20px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar-button:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  /* Popup Container Styles */
+  .popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  .form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+/* Input and Form Styles */
+.input {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    transition: border-color 0.3s;
+  }
+  
+  .input:focus {
+    border-color: #0056b3;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 0 8px rgba(0,86,179,0.6);
+  }
+  
+  .feedback-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    height: 20px;
+  }
+  
+  /* Button Styles */
+  .button {
+    padding: 12px 24px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+    color: #fff;
+  }
+  
+  .close-button {
+    background-color: #dc3545;
+  }
+  
+  .close-button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Popup and Box Styling */
+  .popup-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .form-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: auto;
+    max-width: 100%;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Improvements for readability and interaction */
+  .post-box {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px 0;
+  }
+  
+  .post-title, .post-content, .cred-text {
+    margin-bottom: 10px;
+  }
+  
+  
+  .post-content {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .cred-text {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  h2 {
+text-align: center;
+  }
+  h1 {
+color: #fff;
+}
