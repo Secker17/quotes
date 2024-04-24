@@ -116,8 +116,8 @@ const App = () => {
     <div>
       <div className="navbar-container">
         <img src={logo} alt="Logo" className="logo" />
-        <h1>{loggedIn ? `Secker - ${username}` : "Secker"}</h1>
-        <div className="navbar-links">
+        <h1>{loggedIn ? `quotes - ${loggedInUser}` : "quotes"}</h1>
+<div className="navbar-links">
           {!loggedIn && (
             <>
               <button className="navbar-button" onClick={handleLoginPopup}>Logg inn</button>
