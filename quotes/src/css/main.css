@@ -164,3 +164,87 @@ text-align: center;
   h1 {
 color: #fff;
 }
+
+
+/* src/css/main.css */
+
+.editor-container {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.quote-input {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.save-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #5cb85c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #4cae4c;
+}
+
+.quotes-display {
+  margin-top: 20px;
+}
+
+.quote {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #e7e7e7;
+}
+
+
+/* Add to your main.css */
+
+.quote-box {
+  margin: 20px auto; /* Auto will center the box if it has a set width */
+  padding: 20px;
+  text-align: center; /* This will center the text within the quote box */
+  font-family: 'Playfair Display', serif; /* Classic-style font */
+  font-size: 1.5em; /* Slightly larger font size */
+  font-style: italic; /* Italicize the quote */
+  line-height: 1.6;
+  position: relative;
+}
+
+.quote-content {
+  display: block; /* Allows the content to fill the width of its container */
+  position: relative;
+  z-index: 1;
+}
+
+.quote-box:before,
+.quote-box:after {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 4em;
+  color: #8a6d3b;
+  line-height: 0.1em;
+  margin-right: 0.25em; /* Adjust margin to your preference */
+  vertical-align: -0.4em; /* Aligns the quotes nicely with the text */
+}
+
+.quote-box:after {
+  margin-left: 0.25em; /* Adjust margin to your preference */
+}
+
+/* You may need to add @import at the top of your CSS file for the Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
