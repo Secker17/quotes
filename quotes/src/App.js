@@ -13,5 +13,6 @@ function App() {
     </BrowserRouter>
   );
 }
-
+// Legg til denne ruten i BrowserRouter i App.js
+<Route path="/:username" element={<UserQuotes />} />
 export default App;

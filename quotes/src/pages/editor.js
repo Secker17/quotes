@@ -20,18 +20,28 @@ const Editor = ({ quote, onSaveSuccess }) => {
   const handleQuoteSave = async () => {
     if (quoteText.trim() === '') {
       alert('Please enter some text for the quote.');
-      return;
+      return; 
     }
+    // Legg til denne valideringen i handleQuoteSave-funksjonen i Editor-komponenten
+if (quoteText.length > 100) {
+  alert('Quote cannot exceed 100 characters.');
+  return;
+}
 
-    try {
-      let response;
-      if (quote) {
-        // If a quote is provided, send a PUT request to update it
-        response = await axios.put(`${API_BASE_URL}/quotes/${quote._id}`, { text: quoteText });
-      } else {
-        // If no quote is provided, send a POST request to create a new quote
-        response = await axios.post(`${API_BASE_URL}/quotes`, { text: quoteText });
-      }
+try {
+  const token = localStorage.getItem('authToken'); // Hent token fra localStorage
+  const headers = {
+    Authorization: `Bearer ${token}` // Sett Authorization-headeren med Bearer-sjemaet
+  };
+
+  let response;
+  if (quote) {
+    // Hvis et sitat er gitt, send en PUT-forespørsel for å oppdatere det
+    response = await axios.put(`${API_BASE_URL}/quotes/${quote._id}`, { text: quoteText }, { headers });
+  } else {
+    // Hvis ingen sitat er gitt, send en POST-forespørsel for å opprette et nytt sitat
+    response = await axios.post(`${API_BASE_URL}/quotes`, { text: quoteText }, { headers });
+  }
       setQuoteText(''); // Clear input after save
       onSaveSuccess(response.data); // Call onSaveSuccess callback with the saved quote data
     } catch (error) {
