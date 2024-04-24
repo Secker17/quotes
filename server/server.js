@@ -24,6 +24,11 @@ const Quote = mongoose.model('Quote', new mongoose.Schema({
     userId: mongoose.Schema.Types.ObjectId
 }));
 
+const crypto = require('crypto');
+
+const secret = crypto.randomBytes(64).toString('hex');
+console.log('Your JWT_SECRET is:', secret);
+
 // Middleware to authenticate
 const authenticate = (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
@@ -61,18 +66,40 @@ app.post('/eksamen/login', async (req, res) => {
     res.json({ token });
 });
 
+// New route to get a random quote
+app.get('/eksamen/random-quote', async (req, res) => {
+    const randomQuote = await Quote.aggregate([{ $sample: { size: 1 } }]);
+    res.json(randomQuote[0]);
+});
+
+// New dynamic route to get quotes by username
+app.get('/eksamen/:username/quotes', async (req, res) => {
+    const user = await User.findOne({ username: req.params.username });
+    if (!user) {
+        return res.status(404).send('User not found');
+    }
+    const quotes = await Quote.find({ userId: user._id });
+    res.json(quotes);
+});
+
 app.get('/eksamen/quotes', authenticate, async (req, res) => {
     const quotes = await Quote.find({ userId: req.userId });
     res.json(quotes);
 });
 
 app.post('/eksamen/quotes', authenticate, async (req, res) => {
+    if (req.body.text.length > 100) {
+        return res.status(400).send('Quote cannot exceed 100 characters');
+    }
     const newQuote = new Quote({ text: req.body.text, userId: req.userId });
     await newQuote.save();
     res.status(201).json(newQuote);
 });
 
 app.put('/eksamen/quotes/:id', authenticate, async (req, res) => {
+    if (req.body.text.length > 100) {
+        return res.status(400).send('Quote cannot exceed 100 characters');
+    }
     const updatedQuote = await Quote.findOneAndUpdate(
         { _id: req.params.id, userId: req.userId },
         { text: req.body.text },
