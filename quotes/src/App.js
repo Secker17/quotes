@@ -1,18 +1,18 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/main';
-import Editor from './pages/editor'; // Sørg for at du importerer Editor komponenten
+import Editor from './pages/editor';
+import UserQuotes from './components/userquotes'; // Importer UserQuotes-komponenten
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/editor" element={<Editor />} /> {/* Endret ruten til å være korrekt */}
+        <Route path="/editor" element={<Editor />} />
+        <Route path="/:username" element={<UserQuotes />} /> {/* Legg til denne ruten */}
       </Routes>
     </BrowserRouter>
   );
 }
-// Legg til denne ruten i BrowserRouter i App.js
-<Route path="/:username" element={<UserQuotes />} />
+
 export default App;

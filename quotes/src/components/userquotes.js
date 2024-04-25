@@ -9,7 +9,7 @@ const UserQuotes = () => {
     useEffect(() => {
         const fetchUserQuotes = async () => {
             try {
-                const response = await axios.get(`${API_BASE_URL}/${username}/quotes`);
+                const response = await axios.get(`{http://localhost:5000/}/${username}/quotes`);
                 setQuotes(response.data);
             } catch (error) {
                 console.error('Error fetching user quotes:', error);
