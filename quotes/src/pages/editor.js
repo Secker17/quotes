@@ -7,12 +7,12 @@ const Editor = ({ onSaveSuccess, onSaveError }) => {
   const [quoteText, setQuoteText] = useState('');
 
   const handleQuoteSave = async () => {
-    if (!quoteText.trim()) {
-      onSaveError('Sitatet kan ikke være tomt.');
+    if (quoteText.trim() === '') {
+      onSaveError && onSaveError('Sitatet kan ikke være tomt.');
       return;
     }
     if (quoteText.length > 100) {
-      onSaveError('Sitatet kan ikke overstige 100 tegn.');
+      onSaveError && onSaveError('Sitatet kan ikke overstige 100 tegn.');
       return;
     }
 
@@ -23,10 +23,10 @@ const Editor = ({ onSaveSuccess, onSaveError }) => {
       };
       const response = await axios.post(`${API_BASE_URL}/quotes`, { text: quoteText }, { headers });
       setQuoteText('');
-      onSaveSuccess(response.data);
+      onSaveSuccess && onSaveSuccess(response.data);
     } catch (error) {
       console.error('Error saving the quote:', error);
-      onSaveError('Kunne ikke lagre sitatet. Vennligst prøv igjen.');
+      onSaveError && onSaveError('Kunne ikke lagre sitatet. Vennligst prøv igjen.');
     }
   };
 
